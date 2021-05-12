@@ -4,13 +4,9 @@
       <h3>axios 테스트</h3>
       <p>get요청</p>
       <button @click="get">get요청</button>
-      <br>
-      <p>이름으로 get요청</p>
-      <input type="text" placeholder="name" v-model="name">
-      <button @click="get2">get요청2</button>
+      
       <br><hr>
-      <p>name: {{name}}</p>
-      <p>age: {{age}}</p>
+      <p>brand_name: {{name}}</p>
     </div>
 
   </div>
@@ -32,17 +28,10 @@ export default {
   },
   methods:{
     get(){
-      axios.get('/get1').then(res =>{
-        this.name = res.name;
-        this.age = res.age;
+      axios.get('myapp/brand/').then(res =>{
+        this.name = res[0].brand_name;
       })
     },
-    get2(){
-      axios.get('/get2', {params:{name: this.name}}).then(res =>{
-        this.name = res.name;
-        this.age = res.age;
-      })
-    }
   }
 }
 </script>
